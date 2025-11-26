@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重慶豪華九日遊</title>
+    <style>
+        /* 這裡設定整個網頁看起來像 App */
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f5; }
+        
+        /* 頂部藍色區塊 */
+        .header { background-color: #4a5bf7; color: white; padding: 20px 20px 10px 20px; position: sticky; top: 0; z-index: 100; }
+        .title { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+        .subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 15px; }
+        
+        /* 日期頁籤 (D1, D2...) */
+        .tabs { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; -webkit-overflow-scrolling: touch; }
+        .tab { min-width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; cursor: pointer; flex-shrink: 0; }
+        .tab.active { background: white; color: #4a5bf7; font-weight: bold; }
+        .tab-date { font-size: 12px; margin-bottom: 2px; }
+        .tab-day { font-size: 18px; }
+
+        /* 內容區塊 */
+        .content { padding: 20px; padding-bottom: 80px; display: none; }
+        .content.active { display: block; }
+        
+        /* 行程卡片 */
+        .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .time { font-size: 14px; color: #888; margin-bottom: 5px; font-weight: 500; }
+        .event { font-size: 18px; font-weight: bold; color: #333; margin-bottom: 8px; }
+        .desc { font-size: 14px; color: #666; line-height: 1.5; }
+        .tag { display: inline-block; background: #eff6ff; color: #4a5bf7; font-size: 12px; padding: 4px 8px; border-radius: 6px; margin-top: 8px; text-decoration: none;}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="title">✈️ 重慶豪華九日遊</div>
+    <div class="subtitle">DEC 20 - DEC 28, 2025</div>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('d1', this)"><span class="tab-date">12/20</span><span class="tab-day">D1</span></div>
+        <div class="tab" onclick="switchTab('d2', this)"><span class="tab-date">12/21</span><span class="tab-day">D2</span></div>
+        <div class="tab" onclick="switchTab('d3', this)"><span class="tab-date">12/22</span><span class="tab-day">D3</span></div>
+        <div class="tab" onclick="switchTab('d4', this)"><span class="tab-date">12/23</span><span class="tab-day">D4</span></div>
+        <div class="tab" onclick="switchTab('d5', this)"><span class="tab-date">12/24</span><span class="tab-day">D5</span></div>
+    </div>
+</div>
+
+<div id="d1" class="content active">
+    <div class="card">
+        <div class="time">19:20 - 23:05</div>
+        <div class="event">🛫 飛往重慶</div>
+        <div class="desc">搭乘中國國際航空 CA-410<br>桃園機場 ➔ 重慶江北機場</div>
+    </div>
+    <div class="card">
+        <div class="time">住宿</div>
+        <div class="event">🏨 重慶伊凡酒店</div>
+        <div class="desc">抵達後直接前往飯店休息，準備明日行程。</div>
+        <a href="https://www.google.com/maps/search/?api=1&query=重慶伊凡酒店" class="tag" target="_blank">導航</a>
+    </div>
+</div>
+
+<div id="d2" class="content">
+    <div class="card">
+        <div class="time">09:00 - 12:00</div>
+        <div class="event">⛰️ 武隆天生三橋</div>
+        <div class="desc">變形金剛取景地，世界最大天生橋群。</div>
+        <a href="https://www.google.com/maps/search/?api=1&query=武隆天生三橋" class="tag" target="_blank">地圖</a>
+    </div>
+    <div class="card">
+        <div class="time">14:00 - 16:00</div>
+        <div class="event">🌊 龍水峽地縫</div>
+        <div class="desc">地心之旅，觀賞一線天瀑布奇觀。</div>
+    </div>
+</div>
+
+<div id="d3" class="content">
+    <div class="card">
+        <div class="event">🌲 仙女山大草原</div>
+        <div class="desc">待補...</div>
+    </div>
+</div>
+
+<div id="d4" class="content"><div class="card"><div class="event">內容待補</div></div></div>
+<div id="d5" class="content"><div class="card"><div class="event">內容待補</div></div></div>
+
+<script>
+    function switchTab(dayId, element) {
+        // 隱藏所有內容
+        document.querySelectorAll('.content').forEach(div => div.classList.remove('active'));
+        // 移除所有 Tab 的亮起狀態
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        
+        // 顯示選中的那天
+        document.getElementById(dayId).classList.add('active');
+        // 讓按鈕亮起
+        element.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
