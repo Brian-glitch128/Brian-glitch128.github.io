@@ -7,11 +7,11 @@
     <style>
         :root { --primary: #ff6b6b; --text: #2d3436; }
         
-        /* 動態背景 */
+        /* 動態背景：極光漸層 */
         body { 
             margin: 0; padding: 0; 
             font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", sans-serif; 
-            color: var(--text); padding-bottom: 90px;
+            color: var(--text); padding-bottom: 100px;
             background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -66,32 +66,31 @@
         .card:active { transform: scale(0.98); }
 
         /* 車程專用卡片 */
-        .card.travel-time {
-            background: #fff;
-            border-left: 6px solid #636e72;
-            padding: 15px 20px;
-        }
+        .card.travel-time { background: #fff; border-left: 6px solid #636e72; padding: 15px 20px; }
         .travel-info { display: flex; align-items: center; justify-content: space-between; }
         .travel-route { font-size: 16px; font-weight: 800; color: #2d3436; }
         .travel-duration { font-size: 14px; font-weight: bold; color: #636e72; background: #dfe6e9; padding: 5px 10px; border-radius: 10px; }
 
         /* 圖片樣式 */
-        .card-img-box { width: 100%; height: 160px; overflow: hidden; position: relative; }
+        .card-img-box { width: 100%; height: 180px; overflow: hidden; position: relative; }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .card:hover .card-img { transform: scale(1.05); } 
         
         .card-body { padding: 15px 20px 20px; }
-
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 5px; }
+        
+        /* 標籤設計 */
         .tag { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .tag.spot { background: #ffeaa7; color: #d35400; }
         .tag.hotel { background: #74b9ff; color: #fff; }
         .tag.meal { background: #55efc4; color: #00b894; }
         .tag.transport { background: #dfe6e9; color: #636e72; }
+        .tag.night { background: #6c5ce7; color: #fff; } /* 晚上行程專用色 */
         
-        .name { font-size: 18px; font-weight: 800; margin-bottom: 6px; color: #2d3436; }
-        .desc { font-size: 14px; color: #636e72; line-height: 1.5; margin-bottom: 12px; }
+        .name { font-size: 18px; font-weight: 800; margin-bottom: 8px; color: #2d3436; line-height: 1.3; }
+        .desc { font-size: 14px; color: #636e72; line-height: 1.6; margin-bottom: 12px; }
         
+        /* 導航按鈕 */
         .btn-map { 
             display: inline-block; background: linear-gradient(45deg, #ff9a9e, #fad0c4);
             color: white; padding: 8px 16px; border-radius: 20px; 
@@ -105,7 +104,7 @@
 <body>
 
 <div class="header">
-    <div class="title">📸 重慶豪華九日遊</div>
+    <div class="title">🌶️ 重慶豪華九日遊</div>
     <div class="subtitle">
         <span>Dec 20 - Dec 28, 2025</span>
         <span class="flight-badge">CA410</span>
@@ -137,136 +136,189 @@
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1548232979-6c557ee14752?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag transport">✈️ 啟程</span></div>
-            <div class="name">抵達夢幻山城：重慶</div>
-            <div class="desc"> CA-410 (19:20 - 23:05)<br>入住：重慶伊凡酒店</div>
+            <div class="name">抵達山城重慶</div>
+            <div class="desc">
+                航班：中國國際航空 CA-410<br>
+                時間：19:20 桃園起飛 ➔ 23:05 抵達重慶<br>
+                介紹：抵達後感受「霧都」與「碼頭文化」的獨特氛圍。
+            </div>
             <a href="https://www.google.com/maps/search/?api=1&query=重慶伊凡酒店" target="_blank" class="btn-map">📍 導航去飯店</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span></div>
+            <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
+            <div class="desc">
+                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
+                因抵達時間較晚（約 23:05），建議直接入住飯店休息，養精蓄銳準備明天的行程。
+            </div>
         </div>
     </div>
 </div>
 
 <div id="d2" class="content">
-    <div class="card travel-time">
-        <div class="travel-info">
-            <span class="travel-route">🚌 重慶 ➔ 武隆</span>
-            <span class="travel-duration">車程約 3H</span>
-        </div>
-    </div>
+    <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 重慶 ➔ 武隆</span><span class="travel-duration">車程約 3H</span></div></div>
+    
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">🎬 變形金剛取景地</span></div>
-            <div class="name">天生三橋 (天坑)</div>
-            <div class="desc">世界最大的天生橋群，氣勢磅礡的喀斯特地貌。</div>
+            <div class="card-header"><span class="tag spot">🎬 5A級景區</span></div>
+            <div class="name">天生三橋 (天坑) & 龍水峽地縫</div>
+            <div class="desc">
+                1. <strong>天生三橋</strong>：世界最大天生橋群，電影《變形金剛4》與《滿城盡帶黃金甲》取景地。含環保車、電梯與電瓶車。<br>
+                2. <strong>龍水峽地縫</strong>：被稱為「一線天」的地質奇觀，峽谷幽深，飛瀑流泉。
+            </div>
             <a href="https://www.google.com/maps/search/?api=1&query=武隆天生三橋" target="_blank" class="btn-map">📍 地圖導航</a>
         </div>
     </div>
+    
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag meal">🍗 美食</span></div>
-            <div class="name">午餐：三葉土雞</div>
-            <div class="desc">在地風味料理，補充體力。</div>
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 晚上去哪玩?</span></div>
+            <div class="name">武隆依雲度假酒店 或 大衛營酒店</div>
+            <div class="desc">
+                <strong>晚餐</strong>：方便逛街，敬請自理。<br>
+                <strong>推薦行程</strong>：晚餐後可至<strong>「仙女山鎮中心」</strong>散步。這裡有濃濃的歐式風情建築，餐廳與商店林立，非常熱鬧，適合體驗當地熱炒或燒烤。
+            </div>
         </div>
     </div>
 </div>
 
 <div id="d3" class="content">
-    <div class="card travel-time">
-        <div class="travel-info">
-            <span class="travel-route">🚌 武隆 ➔ 彭水</span>
-            <span class="travel-duration">車程約 1.5H</span>
-        </div>
-    </div>
+    <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 武隆 ➔ 彭水</span><span class="travel-duration">車程約 1.5H</span></div></div>
+    
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🚂 東方瑞士</span></div>
-            <div class="name">仙女山大草原</div>
-            <div class="desc">搭乘小火車，在雲端草原上漫步。</div>
+            <div class="name">仙女山大草原 & 芙蓉洞</div>
+            <div class="desc">
+                1. <strong>仙女山</strong>：搭乘小火車穿梭在平均海拔1900米的高山草原，風景如畫。<br>
+                2. <strong>芙蓉洞</strong>：世界三大洞穴之一，五彩斑斕的鐘乳石，含往返索道。
+            </div>
         </div>
     </div>
+    
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏮 古鎮</span></div>
-            <div class="name">入住：龔灘古鎮</div>
-            <div class="desc">烏江畫廊旁的千年古鎮，夜晚景色迷人。</div>
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 古鎮夜遊</span></div>
+            <div class="name">龔灘仁義大酒店 或同級</div>
+            <div class="desc">
+                <strong>地點</strong>：位於烏江與阿蓬江交匯處。<br>
+                <strong>推薦行程</strong>：入住後務必去<strong>「龔灘古鎮」</strong>老街走走。晚上的古鎮掛滿紅燈籠，倒映在烏江水面上，景色比白天更迷人，適合攝影與散步。
+            </div>
         </div>
     </div>
 </div>
 
 <div id="d4" class="content">
-    <div class="card travel-time">
-        <div class="travel-info">
-            <span class="travel-route">🚌 彭水 ➔ 重慶</span>
-            <span class="travel-duration">車程約 3H</span>
-        </div>
-    </div>
+    <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 彭水 ➔ 重慶</span><span class="travel-duration">車程約 3H</span></div></div>
+    
     <div class="card">
-        <div class="card-img-box"><img src="data:image/jpeg;base64,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" class="card-img"></div>
+        <div class="card-img-box"><img src="https://images.unsplash.com/photo-1534068590799-09895a701e3e?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">🌃 魔幻夜景</span></div>
-            <div class="name">洪崖洞 & 千廝門大橋</div>
-            <div class="desc">像極了神隱少女的湯屋，重慶必拍打卡點！</div>
+            <div class="card-header"><span class="tag spot">🌃 重慶地標</span></div>
+            <div class="name">烏江畫廊 & 洪崖洞夜景</div>
+            <div class="desc">
+                1. <strong>烏江畫廊</strong>：乘坐遊船欣賞「百里畫廊」山水美景。<br>
+                2. <strong>蚩尤九黎城</strong>：苗族傳統建築群。<br>
+                3. <strong>洪崖洞</strong>：晚上抵達重慶最火紅的景點，依山而建的吊腳樓在燈光下像極了神隱少女的場景。
+            </div>
             <a href="https://www.google.com/maps/search/?api=1&query=洪崖洞" target="_blank" class="btn-map">📍 導航</a>
         </div>
     </div>
+
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag meal">🌶️ 火鍋</span></div>
-            <div class="name">晚餐：枇杷園火鍋</div>
-            <div class="desc">體驗最道地的重慶麻辣火鍋。</div>
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 市區熱鬧</span></div>
+            <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
+            <div class="desc">
+                <strong>晚餐</strong>：枇杷園火鍋 (120RMB)。<br>
+                <strong>推薦行程</strong>：行程已包含洪崖洞夜景。若意猶未盡，可步行至附近的<strong>「解放碑步行街」</strong>，那是重慶最繁華的商圈，或者去<strong>「八一路好吃街」</strong>品嚐酸辣粉等在地小吃。
+            </div>
         </div>
     </div>
 </div>
 
 <div id="d5" class="content">
-    <div class="card travel-time">
-        <div class="travel-info">
-            <span class="travel-route">🚌 重慶 ➔ 奉節</span>
-            <span class="travel-duration">長途車程約 5H</span>
-        </div>
-    </div>
+    <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 重慶 ➔ 奉節</span><span class="travel-duration">長途車程約 5H</span></div></div>
+    
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1548575089-c88f2195f082?auto=format&fit=crop&w=800&q=80" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">💰 10元人民幣背景</span></div>
+            <div class="card-header"><span class="tag spot">💰 歷史名勝</span></div>
             <div class="name">白帝城 & 瞿塘峽</div>
-            <div class="desc">「夔門天下雄」，長江三峽最壯觀的入口。</div>
+            <div class="desc">
+                位於長江北岸，是觀賞「夔門天下雄」的最佳地點。這裡也是 10 元人民幣背後的圖案所在地，氣勢雄偉。
+            </div>
             <a href="https://www.google.com/maps/search/?api=1&query=白帝城" target="_blank" class="btn-map">📍 地圖導航</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span></div>
+            <div class="name">奉節歐庭酒店 或同級</div>
+            <div class="desc">
+                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
+                奉節縣城相對寧靜。建議晚餐後可沿著長江邊的<strong>濱江路</strong>散步，欣賞長江夜景，體驗小縣城的慢生活節奏。
+            </div>
         </div>
     </div>
 </div>
 
 <div id="d6" class="content">
-    <div class="card travel-time">
-        <div class="travel-info">
-            <span class="travel-route">🚌 奉節 ➔ 巫山</span>
-            <span class="travel-duration">車程約 1H</span>
-        </div>
-    </div>
+    <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 奉節 ➔ 巫山</span><span class="travel-duration">車程約 1H</span></div></div>
+    
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">⛰️ 三峽之巔</span></div>
-            <div class="name">巫山小三峽</div>
-            <div class="desc">搭乘遊船深入峽谷，欣賞秀麗山水。</div>
+            <div class="card-header"><span class="tag spot">⛰️ 峽谷風光</span></div>
+            <div class="name">三峽之巔 & 巫山小三峽</div>
+            <div class="desc">
+                1. <strong>三峽之巔</strong>：長江三峽物理形態最高處，俯瞰瞿塘峽全景。<br>
+                2. <strong>小三峽</strong>：搭船遊覽龍門峽、巴霧峽、滴翠峽，水質清澈，景色秀麗。
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span></div>
+            <div class="name">巫山凱創戴斯酒店 或同級</div>
+            <div class="desc">
+                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
+                晚餐享用巫山風味。晚上可以在飯店附近逛逛，巫山縣城依山而建，夜景也別具一格，可尋找當地的<strong>「巫山烤魚」</strong>當作宵夜。
+            </div>
         </div>
     </div>
 </div>
 
 <div id="d7" class="content">
-    <div class="card travel-time">
-        <div class="travel-info">
-            <span class="travel-route">🚌 巫山 ➔ 重慶</span>
-            <span class="travel-duration">長途車程約 5.5H</span>
-        </div>
-    </div>
+    <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 巫山 ➔ 重慶</span><span class="travel-duration">長途車程約 5.5H</span></div></div>
+    
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1555899434-94d1368d7dd6?auto=format&fit=crop&w=800&q=80" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🚈 網紅奇觀</span></div>
-            <div class="name">李子壩輕軌站</div>
-            <div class="desc">親眼見證列車「穿樓而過」的神奇畫面。</div>
+            <div class="name">李子壩輕軌站 (穿樓)</div>
+            <div class="desc">
+                <strong>行程詳細：</strong><br>
+                從巫山返回重慶後，前往參觀最受矚目的網紅景點。親眼見證輕軌列車直接穿過 19 層住宅大樓的奇景，這是重慶獨有的「立體交通」代表。
+            </div>
             <a href="https://www.google.com/maps/search/?api=1&query=李子壩輕軌站" target="_blank" class="btn-map">📍 導航</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 自由活動推薦</span></div>
+            <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
+            <div class="desc">
+                <strong>晚餐</strong>：敬請自理。<br>
+                <strong>推薦去處</strong>：回到市區，晚上強烈建議去<strong>「觀音橋步行街」</strong>。這裡是重慶年輕人最愛去的地方，有巨大的 3D 屏幕，周圍美食無數（火鍋、串串），非常適合作為旅程尾聲的狂歡。
+            </div>
         </div>
     </div>
 </div>
@@ -275,16 +327,26 @@
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">🐼 國寶賣萌</span></div>
-            <div class="name">重慶動物園</div>
-            <div class="desc">這裡有超多隻大熊貓，準備被融化吧！</div>
+            <div class="card-header"><span class="tag spot">🐼 市區一日遊</span></div>
+            <div class="name">熊貓、索道與古鎮</div>
+            <div class="desc">
+                1. <strong>重慶動物園</strong>：探訪可愛的國寶大熊貓。<br>
+                2. <strong>雲端之眼</strong>：67樓高空360度俯瞰重慶全景。<br>
+                3. <strong>長江索道</strong>：被譽為「萬里長江第一條空中走廊」，飛越長江。<br>
+                4. <strong>磁器口古鎮</strong>：千年古鎮，品嚐陳麻花、酸辣粉。
+            </div>
         </div>
     </div>
+    
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">🚠 飛越長江</span></div>
-            <div class="name">長江索道 & 磁器口</div>
-            <div class="desc">體驗空中巴士，再逛逛千年老街磁器口。</div>
+            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag meal">🍽️ 惜別晚宴</span></div>
+            <div class="name">重慶伊凡酒店 或同級</div>
+            <div class="desc">
+                <strong>晚餐</strong>：禮宴巴國 (含表演) 或 光環綠茶餐廳 (100RMB)。<br>
+                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
+                這是在重慶的最後一晚，建議在飯店附近整理行李，或者去附近的超市買些重慶火鍋底料當伴手禮。
+            </div>
         </div>
     </div>
 </div>
@@ -292,14 +354,18 @@
 <div id="d9" class="content">
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag transport">👋 返程</span></div>
+            <div class="card-header"><span class="tag transport">👋 平安返家</span></div>
             <div class="name">重慶 ✈️ 桃園</div>
-            <div class="desc">帶著滿滿回憶回家囉！CA-409 (15:20)</div>
+            <div class="desc">
+                享用早餐後，飯店自由活動，隨後前往機場。<br>
+                <strong>航班</strong>：CA-409 (15:20 起飛 - 18:20 抵達)<br>
+                帶著滿滿的回憶回到溫暖的家。
+            </div>
         </div>
     </div>
 </div>
 
-<div class="footer-note">© 2025 重慶豪華遊 - Visual Edition</div>
+<div class="footer-note">© 2025 重慶豪華遊 - Final Edition</div>
 
 <script>
     const locations = {
