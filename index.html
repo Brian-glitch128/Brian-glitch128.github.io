@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>重慶豪華九日遊</title>
     <style>
-        :root { --primary: #ff6b6b; --text: #2d3436; }
+        :root { --primary: #ff6b6b; --text: #2d3436; --night: #6c5ce7; }
         
-        /* 動態背景：極光漸層 */
+        /* 極光動態背景 */
         body { 
             margin: 0; padding: 0; 
             font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", sans-serif; 
@@ -19,86 +19,93 @@
         }
         @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        /* 頭部設計 */
+        /* 頂部導航欄 */
         .header { 
-            background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 20px 20px 10px; border-radius: 0 0 30px 30px; 
             position: sticky; top: 0; z-index: 100; 
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255,255,255,0.3);
         }
-        .title { font-size: 26px; font-weight: 900; margin-bottom: 5px; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .title { font-size: 26px; font-weight: 900; margin-bottom: 5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         .subtitle { font-size: 14px; color: #fff; font-weight: 700; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .flight-badge { background: #fff; color: #ff6b6b; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .flight-badge { background: #fff; color: #ff6b6b; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 
         /* 天氣小工具 */
         .weather-widget { 
-            background: rgba(255, 255, 255, 0.7); border-radius: 16px; padding: 8px 15px; 
+            background: rgba(255, 255, 255, 0.85); border-radius: 16px; padding: 8px 15px; 
             display: flex; align-items: center; justify-content: space-between; 
             font-size: 14px; font-weight: bold; color: #555;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 10px;
         }
         .weather-temp { color: #ff6b6b; font-size: 18px; margin-left: 5px; }
 
-        /* 日期按鈕 */
+        /* 日期滑動選單 */
         .tabs-container { overflow-x: auto; white-space: nowrap; padding: 15px 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .tabs-container::-webkit-scrollbar { display: none; }
         .tab { 
             display: inline-block; width: 60px; height: 70px; margin-right: 12px; 
             background: rgba(255, 255, 255, 0.8); border-radius: 18px; text-align: center; cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); color: #888; border: 2px solid transparent; 
         }
         .tab.active { background: #fff; color: #ff6b6b; transform: scale(1.1) translateY(-5px); box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3); }
         .tab-date { font-size: 12px; margin-top: 12px; display: block; font-weight: bold; }
         .tab-day { font-size: 20px; font-weight: 900; display: block; line-height: 1.2; }
 
-        /* 內容區塊 */
-        .content { display: none; padding: 0 20px; animation: popIn 0.5s ease; }
+        /* 內容區塊動畫 */
+        .content { display: none; padding: 0 20px; animation: slideUp 0.5s ease; }
         .content.active { display: block; }
-        @keyframes popIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
 
-        /* 卡片設計 */
+        /* 卡片通用設計 */
         .card { 
-            background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 0; 
-            margin-bottom: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            background: rgba(255, 255, 255, 0.95); border-radius: 24px; padding: 0; 
+            margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
             position: relative; overflow: hidden; transition: transform 0.2s;
         }
         .card:active { transform: scale(0.98); }
 
-        /* 車程專用卡片 */
+        /* 車程資訊卡 */
         .card.travel-time { background: #fff; border-left: 6px solid #636e72; padding: 15px 20px; }
         .travel-info { display: flex; align-items: center; justify-content: space-between; }
         .travel-route { font-size: 16px; font-weight: 800; color: #2d3436; }
-        .travel-duration { font-size: 14px; font-weight: bold; color: #636e72; background: #dfe6e9; padding: 5px 10px; border-radius: 10px; }
+        .travel-duration { font-size: 13px; font-weight: bold; color: #636e72; background: #dfe6e9; padding: 5px 12px; border-radius: 20px; }
 
-        /* 圖片樣式 */
+        /* 圖片容器 */
         .card-img-box { width: 100%; height: 180px; overflow: hidden; position: relative; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .card:hover .card-img { transform: scale(1.05); } 
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .card:hover .card-img { transform: scale(1.08); } 
         
-        .card-body { padding: 15px 20px 20px; }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 5px; }
+        /* 卡片內容 */
+        .card-body { padding: 18px 20px 22px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; }
         
-        /* 標籤設計 */
-        .tag { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        /* 標籤 Tag */
+        .tag { font-size: 11px; padding: 5px 10px; border-radius: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .tag.spot { background: #ffeaa7; color: #d35400; }
         .tag.hotel { background: #74b9ff; color: #fff; }
         .tag.meal { background: #55efc4; color: #00b894; }
         .tag.transport { background: #dfe6e9; color: #636e72; }
-        .tag.night { background: #6c5ce7; color: #fff; } /* 晚上行程專用色 */
+        .tag.night { background: var(--night); color: #fff; box-shadow: 0 2px 5px rgba(108, 92, 231, 0.3); } /* 獨家夜間標籤 */
         
-        .name { font-size: 18px; font-weight: 800; margin-bottom: 8px; color: #2d3436; line-height: 1.3; }
-        .desc { font-size: 14px; color: #636e72; line-height: 1.6; margin-bottom: 12px; }
+        .name { font-size: 19px; font-weight: 800; margin-bottom: 8px; color: #2d3436; line-height: 1.3; }
+        .desc { font-size: 15px; color: #636e72; line-height: 1.6; margin-bottom: 15px; }
         
-        /* 導航按鈕 */
+        /* 按鈕 */
         .btn-map { 
-            display: inline-block; background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            color: white; padding: 8px 16px; border-radius: 20px; 
+            display: inline-flex; align-items: center; background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: white; padding: 8px 18px; border-radius: 20px; 
             text-decoration: none; font-size: 13px; font-weight: bold; 
             box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+            transition: 0.2s;
         }
+        .btn-map:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4); }
 
         .footer-note { text-align: center; font-size: 12px; color: #fff; margin-top: 40px; opacity: 0.8; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        
+        /* 重點文字強調 */
+        strong { color: #2d3436; font-weight: 700; }
+        .highlight { color: #d63031; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -115,7 +122,7 @@
             <span id="weatherIcon">🌤️</span>
             <span class="weather-temp" id="weatherTemp">--°C</span>
         </div>
-        <div class="weather-loc"><span id="weatherLocName">讀取中...</span></div>
+        <div class="weather-loc"><span id="weatherLocName">定位中...</span></div>
     </div>
 </div>
 
@@ -135,12 +142,12 @@
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1548232979-6c557ee14752?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag transport">✈️ 啟程</span></div>
-            <div class="name">抵達山城重慶</div>
+            <div class="card-header"><span class="tag transport">✈️ 抵達</span></div>
+            <div class="name">抵達山城：重慶</div>
             <div class="desc">
-                航班：中國國際航空 CA-410<br>
+                航班：<strong>中國國際航空 CA-410</strong><br>
                 時間：19:20 桃園起飛 ➔ 23:05 抵達重慶<br>
-                介紹：抵達後感受「霧都」與「碼頭文化」的獨特氛圍。
+                抵達後感受「霧都」與「碼頭文化」的獨特氛圍。由於時間較晚，專車接送至飯店休息。
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=重慶伊凡酒店" target="_blank" class="btn-map">📍 導航去飯店</a>
         </div>
@@ -150,8 +157,8 @@
             <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span></div>
             <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
             <div class="desc">
-                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
-                因抵達時間較晚（約 23:05），建議直接入住飯店休息，養精蓄銳準備明天的行程。
+                <span style="color:var(--night)">🌙 <strong>晚上建議：</strong></span><br>
+                因抵達時間已晚，建議直接休息。若肚子餓，飯店附近通常有便利商店或小型麵攤，可品嚐一碗重慶小麵。
             </div>
         </div>
     </div>
@@ -166,8 +173,8 @@
             <div class="card-header"><span class="tag spot">🎬 5A級景區</span></div>
             <div class="name">天生三橋 (天坑) & 龍水峽地縫</div>
             <div class="desc">
-                1. <strong>天生三橋</strong>：世界最大天生橋群，電影《變形金剛4》與《滿城盡帶黃金甲》取景地。含環保車、電梯與電瓶車。<br>
-                2. <strong>龍水峽地縫</strong>：被稱為「一線天」的地質奇觀，峽谷幽深，飛瀑流泉。
+                1. <strong>天生三橋</strong>：世界規模最大的喀斯特天生橋群。電影《變形金剛4》與《滿城盡帶黃金甲》取景地。含環保車、電梯與電瓶車。<br>
+                2. <strong>龍水峽地縫</strong>：地心深處的「一線天」，全長5公里，峽谷幽深，飛瀑流泉，景色令人驚嘆。
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=武隆天生三橋" target="_blank" class="btn-map">📍 地圖導航</a>
         </div>
@@ -175,11 +182,12 @@
     
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 晚上去哪玩?</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 夜遊推薦</span></div>
             <div class="name">武隆依雲度假酒店 或 大衛營酒店</div>
             <div class="desc">
                 <strong>晚餐</strong>：方便逛街，敬請自理。<br>
-                <strong>推薦行程</strong>：晚餐後可至<strong>「仙女山鎮中心」</strong>散步。這裡有濃濃的歐式風情建築，餐廳與商店林立，非常熱鬧，適合體驗當地熱炒或燒烤。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                推薦前往<strong>「仙女山鎮中心」</strong>。這裡有濃濃的歐式風情建築，街道兩旁餐廳林立，可以品嚐當地的烤羊肉串，感受高山小鎮的熱鬧夜晚。
             </div>
         </div>
     </div>
@@ -194,19 +202,20 @@
             <div class="card-header"><span class="tag spot">🚂 東方瑞士</span></div>
             <div class="name">仙女山大草原 & 芙蓉洞</div>
             <div class="desc">
-                1. <strong>仙女山</strong>：搭乘小火車穿梭在平均海拔1900米的高山草原，風景如畫。<br>
-                2. <strong>芙蓉洞</strong>：世界三大洞穴之一，五彩斑斕的鐘乳石，含往返索道。
+                1. <strong>仙女山</strong>：搭乘小火車穿梭在平均海拔1900米的高山草原，有「山城夏宮」美譽。<br>
+                2. <strong>芙蓉洞</strong>：世界三大洞穴之一，五彩斑斕的鐘乳石洞，含往返索道，是中國最美的地下宮殿。
             </div>
         </div>
     </div>
     
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 古鎮夜遊</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 古鎮夜景</span></div>
             <div class="name">龔灘仁義大酒店 或同級</div>
             <div class="desc">
                 <strong>地點</strong>：位於烏江與阿蓬江交匯處。<br>
-                <strong>推薦行程</strong>：入住後務必去<strong>「龔灘古鎮」</strong>老街走走。晚上的古鎮掛滿紅燈籠，倒映在烏江水面上，景色比白天更迷人，適合攝影與散步。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                絕對不能錯過<strong>「龔灘古鎮」</strong>的夜景！晚上古鎮掛滿紅燈籠，倒映在烏江水面上，比白天更有韻味。建議沿著石板路散步，或在江邊小酒吧小酌一杯。
             </div>
         </div>
     </div>
@@ -218,24 +227,25 @@
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1534068590799-09895a701e3e?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">🌃 重慶地標</span></div>
+            <div class="card-header"><span class="tag spot">🌃 魔幻重慶</span></div>
             <div class="name">烏江畫廊 & 洪崖洞夜景</div>
             <div class="desc">
-                1. <strong>烏江畫廊</strong>：乘坐遊船欣賞「百里畫廊」山水美景。<br>
-                2. <strong>蚩尤九黎城</strong>：苗族傳統建築群。<br>
-                3. <strong>洪崖洞</strong>：晚上抵達重慶最火紅的景點，依山而建的吊腳樓在燈光下像極了神隱少女的場景。
+                1. <strong>烏江畫廊</strong>：乘坐遊船欣賞「百里畫廊」，山似斧劈，水如碧玉。<br>
+                2. <strong>蚩尤九黎城</strong>：苗族傳統建築群，九黎神柱。<br>
+                3. <strong>洪崖洞</strong>：晚上重頭戲！依山而建的吊腳樓在燈光下像極了《神隱少女》場景，是重慶必打卡之地。
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=洪崖洞" target="_blank" class="btn-map">📍 導航</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=洪崖洞" target="_blank" class="btn-map">📍 導航去拍照</a>
         </div>
     </div>
 
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 市區熱鬧</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 市區續攤</span></div>
             <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
             <div class="desc">
                 <strong>晚餐</strong>：枇杷園火鍋 (120RMB)。<br>
-                <strong>推薦行程</strong>：行程已包含洪崖洞夜景。若意猶未盡，可步行至附近的<strong>「解放碑步行街」</strong>，那是重慶最繁華的商圈，或者去<strong>「八一路好吃街」</strong>品嚐酸辣粉等在地小吃。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                行程已含洪崖洞。若意猶未盡，可步行至附近的<strong>「解放碑步行街」</strong>（重慶時代廣場），或去<strong>「八一路好吃街」</strong>品嚐酸辣粉、小湯圓等道地小吃。
             </div>
         </div>
     </div>
@@ -247,10 +257,10 @@
     <div class="card">
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1548575089-c88f2195f082?auto=format&fit=crop&w=800&q=80" class="card-img"></div>
         <div class="card-body">
-            <div class="card-header"><span class="tag spot">💰 歷史名勝</span></div>
+            <div class="card-header"><span class="tag spot">💰 人民幣景點</span></div>
             <div class="name">白帝城 & 瞿塘峽</div>
             <div class="desc">
-                位於長江北岸，是觀賞「夔門天下雄」的最佳地點。這裡也是 10 元人民幣背後的圖案所在地，氣勢雄偉。
+                位於長江北岸，是觀賞<strong>「夔門天下雄」</strong>的最佳地點。這裡也是 10 元人民幣背後的圖案所在地，氣勢雄偉。可以登高遠眺長江三峽的起點。
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=白帝城" target="_blank" class="btn-map">📍 地圖導航</a>
         </div>
@@ -258,11 +268,11 @@
 
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 濱江漫步</span></div>
             <div class="name">奉節歐庭酒店 或同級</div>
             <div class="desc">
-                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
-                奉節縣城相對寧靜。建議晚餐後可沿著長江邊的<strong>濱江路</strong>散步，欣賞長江夜景，體驗小縣城的慢生活節奏。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                奉節縣城相對寧靜。建議晚餐後可前往<strong>「奉節濱江公園」</strong>散步，吹著江風欣賞長江夜景，體驗小縣城的慢生活節奏。
             </div>
         </div>
     </div>
@@ -277,19 +287,19 @@
             <div class="card-header"><span class="tag spot">⛰️ 峽谷風光</span></div>
             <div class="name">三峽之巔 & 巫山小三峽</div>
             <div class="desc">
-                1. <strong>三峽之巔</strong>：長江三峽物理形態最高處，俯瞰瞿塘峽全景。<br>
-                2. <strong>小三峽</strong>：搭船遊覽龍門峽、巴霧峽、滴翠峽，水質清澈，景色秀麗。
+                1. <strong>三峽之巔</strong>：長江三峽物理形態最高處，俯瞰瞿塘峽全景，體驗「一覽眾山小」。<br>
+                2. <strong>小三峽</strong>：搭船遊覽龍門峽、巴霧峽、滴翠峽，水質清澈，兩岸懸崖峭壁，景色秀麗。
             </div>
         </div>
     </div>
 
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 巫山烤魚</span></div>
             <div class="name">巫山凱創戴斯酒店 或同級</div>
             <div class="desc">
-                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
-                晚餐享用巫山風味。晚上可以在飯店附近逛逛，巫山縣城依山而建，夜景也別具一格，可尋找當地的<strong>「巫山烤魚」</strong>當作宵夜。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                巫山縣城依山而建，夜景別具一格（有小香港之稱）。晚上強烈建議去品嚐正宗的<strong>「巫山烤魚」</strong>，這是當地最出名的宵夜美食！
             </div>
         </div>
     </div>
@@ -299,13 +309,13 @@
     <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 巫山 ➔ 重慶</span><span class="travel-duration">長途車程約 5.5H</span></div></div>
     
     <div class="card">
-        <div class="card-img-box"><img src="https://images.unsplash.com/photo-1555899434-94d1368d7dd6?auto=format&fit=crop&w=800&q=80" class="card-img"></div>
+        <div class="card-img-box"><img src="https://images.unsplash.com/photo-1622383563227-0440114a852a?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🚈 網紅奇觀</span></div>
             <div class="name">李子壩輕軌站 (穿樓)</div>
             <div class="desc">
                 <strong>行程詳細：</strong><br>
-                從巫山返回重慶後，前往參觀最受矚目的網紅景點。親眼見證輕軌列車直接穿過 19 層住宅大樓的奇景，這是重慶獨有的「立體交通」代表。
+                從巫山返回重慶後，前往參觀最受矚目的網紅景點。親眼見證輕軌列車直接穿過 19 層住宅大樓的奇景，這是重慶獨有的「立體交通」代表，也是全球罕見的設計。
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=李子壩輕軌站" target="_blank" class="btn-map">📍 導航</a>
         </div>
@@ -313,11 +323,12 @@
 
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag night">🌙 自由活動推薦</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 自由活動推薦</span></div>
             <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
             <div class="desc">
                 <strong>晚餐</strong>：敬請自理。<br>
-                <strong>推薦去處</strong>：回到市區，晚上強烈建議去<strong>「觀音橋步行街」</strong>。這裡是重慶年輕人最愛去的地方，有巨大的 3D 屏幕，周圍美食無數（火鍋、串串），非常適合作為旅程尾聲的狂歡。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                回到市區，推薦去<strong>「觀音橋步行街」</strong>。這裡是重慶年輕人最愛去的地方，有巨大的 3D 屏幕，周圍美食無數（火鍋、串串），非常熱鬧，適合最後幾天的狂歡。
             </div>
         </div>
     </div>
@@ -330,22 +341,23 @@
             <div class="card-header"><span class="tag spot">🐼 市區一日遊</span></div>
             <div class="name">熊貓、索道與古鎮</div>
             <div class="desc">
-                1. <strong>重慶動物園</strong>：探訪可愛的國寶大熊貓。<br>
+                1. <strong>重慶動物園</strong>：探訪可愛的國寶大熊貓（數量超多！）。<br>
                 2. <strong>雲端之眼</strong>：67樓高空360度俯瞰重慶全景。<br>
-                3. <strong>長江索道</strong>：被譽為「萬里長江第一條空中走廊」，飛越長江。<br>
+                3. <strong>長江索道</strong>：被譽為「萬里長江第一條空中走廊」，體驗飛越長江。<br>
                 4. <strong>磁器口古鎮</strong>：千年古鎮，品嚐陳麻花、酸辣粉。
             </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=長江索道" target="_blank" class="btn-map">📍 導航索道</a>
         </div>
     </div>
     
     <div class="card">
         <div class="card-body">
-            <div class="card-header"><span class="tag hotel">🏨 今晚住宿</span><span class="tag meal">🍽️ 惜別晚宴</span></div>
+            <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag meal">🍽️ 惜別晚宴</span></div>
             <div class="name">重慶伊凡酒店 或同級</div>
             <div class="desc">
                 <strong>晚餐</strong>：禮宴巴國 (含表演) 或 光環綠茶餐廳 (100RMB)。<br>
-                <span style="color:#6c5ce7">🌙 晚上行程：</span><br>
-                這是在重慶的最後一晚，建議在飯店附近整理行李，或者去附近的超市買些重慶火鍋底料當伴手禮。
+                <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
+                最後一晚，建議在飯店附近整理行李，或者去附近的超市買些重慶火鍋底料、陳麻花當伴手禮帶回台灣。
             </div>
         </div>
     </div>
@@ -357,7 +369,7 @@
             <div class="card-header"><span class="tag transport">👋 平安返家</span></div>
             <div class="name">重慶 ✈️ 桃園</div>
             <div class="desc">
-                享用早餐後，飯店自由活動，隨後前往機場。<br>
+                享用早餐後，飯店自由活動，隨後專車前往機場。<br>
                 <strong>航班</strong>：CA-409 (15:20 起飛 - 18:20 抵達)<br>
                 帶著滿滿的回憶回到溫暖的家。
             </div>
@@ -365,7 +377,7 @@
     </div>
 </div>
 
-<div class="footer-note">© 2025 重慶豪華遊 - Final Edition</div>
+<div class="footer-note">© 2025 重慶豪華遊 - Flagship Edition</div>
 
 <script>
     const locations = {
