@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>重慶豪華九日遊</title>
     <style>
-        :root { --primary: #ff6b6b; --text: #2d3436; --night: #6c5ce7; }
+        :root { --primary: #ff6b6b; --text: #2d3436; --night: #6c5ce7; --photo: #e1b12c; }
         
         /* 極光動態背景 */
         body { 
@@ -86,7 +86,19 @@
         .tag.hotel { background: #74b9ff; color: #fff; }
         .tag.meal { background: #55efc4; color: #00b894; }
         .tag.transport { background: #dfe6e9; color: #636e72; }
-        .tag.night { background: var(--night); color: #fff; box-shadow: 0 2px 5px rgba(108, 92, 231, 0.3); } /* 獨家夜間標籤 */
+        .tag.night { background: var(--night); color: #fff; box-shadow: 0 2px 5px rgba(108, 92, 231, 0.3); } 
+        
+        /* 🆕 拍照技巧區塊 */
+        .photo-tips {
+            background: #fff8e1;
+            border-left: 4px solid #fdcb6e;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            color: #d35400;
+        }
+        .photo-title { font-weight: 800; display: block; margin-bottom: 4px; display: flex; align-items: center; }
         
         .name { font-size: 19px; font-weight: 800; margin-bottom: 8px; color: #2d3436; line-height: 1.3; }
         .desc { font-size: 15px; color: #636e72; line-height: 1.6; margin-bottom: 15px; }
@@ -105,7 +117,6 @@
         
         /* 重點文字強調 */
         strong { color: #2d3436; font-weight: 700; }
-        .highlight { color: #d63031; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -171,11 +182,17 @@
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🎬 5A級景區</span></div>
-            <div class="name">天生三橋 (天坑) & 龍水峽地縫</div>
+            <div class="name">天生三橋 (天坑)</div>
             <div class="desc">
-                1. <strong>天生三橋</strong>：世界規模最大的喀斯特天生橋群。電影《變形金剛4》與《滿城盡帶黃金甲》取景地。含環保車、電梯與電瓶車。<br>
-                2. <strong>龍水峽地縫</strong>：地心深處的「一線天」，全長5公里，峽谷幽深，飛瀑流泉，景色令人驚嘆。
+                世界規模最大的喀斯特天生橋群。電影《變形金剛4》與《滿城盡帶黃金甲》取景地。
             </div>
+            
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                1. <strong>天龍橋底</strong>：一定要使用「廣角鏡頭」，才能將橋洞與天空同時拍進去，拍出氣勢。<br>
+                2. <strong>變形金剛</strong>：找到大黃蜂模型，採「低角度仰拍」，讓機器人看起來更巨大威武。
+            </div>
+            <br>
             <a href="https://www.google.com/maps/search/?api=1&query=武隆天生三橋" target="_blank" class="btn-map">📍 地圖導航</a>
         </div>
     </div>
@@ -185,7 +202,6 @@
             <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 夜遊推薦</span></div>
             <div class="name">武隆依雲度假酒店 或 大衛營酒店</div>
             <div class="desc">
-                <strong>晚餐</strong>：方便逛街，敬請自理。<br>
                 <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
                 推薦前往<strong>「仙女山鎮中心」</strong>。這裡有濃濃的歐式風情建築，街道兩旁餐廳林立，可以品嚐當地的烤羊肉串，感受高山小鎮的熱鬧夜晚。
             </div>
@@ -200,10 +216,14 @@
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🚂 東方瑞士</span></div>
-            <div class="name">仙女山大草原 & 芙蓉洞</div>
+            <div class="name">仙女山大草原</div>
             <div class="desc">
-                1. <strong>仙女山</strong>：搭乘小火車穿梭在平均海拔1900米的高山草原，有「山城夏宮」美譽。<br>
-                2. <strong>芙蓉洞</strong>：世界三大洞穴之一，五彩斑斕的鐘乳石洞，含往返索道，是中國最美的地下宮殿。
+                搭乘小火車穿梭在平均海拔1900米的高山草原，有「山城夏宮」美譽。
+            </div>
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                1. <strong>小火車</strong>：當火車轉彎時是最佳拍攝時機，可以同時拍到車頭與車身蜿蜒的曲線。<br>
+                2. <strong>草原</strong>：利用長焦鏡頭壓縮畫面，讓牛羊看起來更密集，營造出瑞士般的氛圍。
             </div>
         </div>
     </div>
@@ -213,7 +233,6 @@
             <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 古鎮夜景</span></div>
             <div class="name">龔灘仁義大酒店 或同級</div>
             <div class="desc">
-                <strong>地點</strong>：位於烏江與阿蓬江交匯處。<br>
                 <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
                 絕對不能錯過<strong>「龔灘古鎮」</strong>的夜景！晚上古鎮掛滿紅燈籠，倒映在烏江水面上，比白天更有韻味。建議沿著石板路散步，或在江邊小酒吧小酌一杯。
             </div>
@@ -228,12 +247,16 @@
         <div class="card-img-box"><img src="https://images.unsplash.com/photo-1534068590799-09895a701e3e?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🌃 魔幻重慶</span></div>
-            <div class="name">烏江畫廊 & 洪崖洞夜景</div>
+            <div class="name">洪崖洞夜景 & 千廝門大橋</div>
             <div class="desc">
-                1. <strong>烏江畫廊</strong>：乘坐遊船欣賞「百里畫廊」，山似斧劈，水如碧玉。<br>
-                2. <strong>蚩尤九黎城</strong>：苗族傳統建築群，九黎神柱。<br>
-                3. <strong>洪崖洞</strong>：晚上重頭戲！依山而建的吊腳樓在燈光下像極了《神隱少女》場景，是重慶必打卡之地。
+                晚上重頭戲！依山而建的吊腳樓在燈光下像極了《神隱少女》場景，是重慶必打卡之地。
             </div>
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                1. <strong>最佳機位</strong>：不要擠在洪崖洞裡面。走到旁邊的<strong>「千廝門大橋」上</strong>，可以拍到洪崖洞全景與江景的合照。<br>
+                2. <strong>對岸</strong>：如果有時間，到江對岸的「大劇院」旁，可以拍到最完整的側面全景。
+            </div>
+            <br>
             <a href="https://www.google.com/maps/search/?api=1&query=洪崖洞" target="_blank" class="btn-map">📍 導航去拍照</a>
         </div>
     </div>
@@ -243,7 +266,6 @@
             <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 市區續攤</span></div>
             <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
             <div class="desc">
-                <strong>晚餐</strong>：枇杷園火鍋 (120RMB)。<br>
                 <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
                 行程已含洪崖洞。若意猶未盡，可步行至附近的<strong>「解放碑步行街」</strong>（重慶時代廣場），或去<strong>「八一路好吃街」</strong>品嚐酸辣粉、小湯圓等道地小吃。
             </div>
@@ -260,8 +282,13 @@
             <div class="card-header"><span class="tag spot">💰 人民幣景點</span></div>
             <div class="name">白帝城 & 瞿塘峽</div>
             <div class="desc">
-                位於長江北岸，是觀賞<strong>「夔門天下雄」</strong>的最佳地點。這裡也是 10 元人民幣背後的圖案所在地，氣勢雄偉。可以登高遠眺長江三峽的起點。
+                位於長江北岸，是觀賞<strong>「夔門天下雄」</strong>的最佳地點。這裡也是 10 元人民幣背後的圖案所在地。
             </div>
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                <strong>必拍梗圖</strong>：拿出一張 10 元人民幣（紙鈔），將背面圖案與眼前的夔門風景重疊，對焦在紙幣上，縮小光圈讓背景也清晰，拍出「鈔票風景合一」的趣味照。
+            </div>
+            <br>
             <a href="https://www.google.com/maps/search/?api=1&query=白帝城" target="_blank" class="btn-map">📍 地圖導航</a>
         </div>
     </div>
@@ -272,7 +299,7 @@
             <div class="name">奉節歐庭酒店 或同級</div>
             <div class="desc">
                 <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
-                奉節縣城相對寧靜。建議晚餐後可前往<strong>「奉節濱江公園」</strong>散步，吹著江風欣賞長江夜景，體驗小縣城的慢生活節奏。
+                建議晚餐後可前往<strong>「奉節濱江公園」</strong>散步，吹著江風欣賞長江夜景，體驗小縣城的慢生活節奏。
             </div>
         </div>
     </div>
@@ -287,8 +314,12 @@
             <div class="card-header"><span class="tag spot">⛰️ 峽谷風光</span></div>
             <div class="name">三峽之巔 & 巫山小三峽</div>
             <div class="desc">
-                1. <strong>三峽之巔</strong>：長江三峽物理形態最高處，俯瞰瞿塘峽全景，體驗「一覽眾山小」。<br>
-                2. <strong>小三峽</strong>：搭船遊覽龍門峽、巴霧峽、滴翠峽，水質清澈，兩岸懸崖峭壁，景色秀麗。
+                1. <strong>三峽之巔</strong>：長江三峽物理形態最高處，俯瞰瞿塘峽全景。<br>
+                2. <strong>小三峽</strong>：搭船遊覽龍門峽、巴霧峽、滴翠峽。
+            </div>
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                <strong>三峽之巔</strong>：建議使用「全景模式 (Panorama)」掃描，因為峽谷非常寬闊，普通模式難以裝下整個長江的大拐彎。
             </div>
         </div>
     </div>
@@ -299,7 +330,7 @@
             <div class="name">巫山凱創戴斯酒店 或同級</div>
             <div class="desc">
                 <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
-                巫山縣城依山而建，夜景別具一格（有小香港之稱）。晚上強烈建議去品嚐正宗的<strong>「巫山烤魚」</strong>，這是當地最出名的宵夜美食！
+                巫山縣城依山而建，夜景別具一格。晚上強烈建議去品嚐正宗的<strong>「巫山烤魚」</strong>，這是當地最出名的宵夜美食！
             </div>
         </div>
     </div>
@@ -309,14 +340,20 @@
     <div class="card travel-time"><div class="travel-info"><span class="travel-route">🚌 巫山 ➔ 重慶</span><span class="travel-duration">長途車程約 5.5H</span></div></div>
     
     <div class="card">
-        <div class="card-img-box"><img src="https://images.unsplash.com/photo-1622383563227-0440114a852a?q=80&w=800&auto=format&fit=crop" class="card-img"></div>
+        <div class="card-img-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Liziba_Station_20190602.jpg/800px-Liziba_Station_20190602.jpg" class="card-img"></div>
         <div class="card-body">
             <div class="card-header"><span class="tag spot">🚈 網紅奇觀</span></div>
             <div class="name">李子壩輕軌站 (穿樓)</div>
             <div class="desc">
-                <strong>行程詳細：</strong><br>
-                從巫山返回重慶後，前往參觀最受矚目的網紅景點。親眼見證輕軌列車直接穿過 19 層住宅大樓的奇景，這是重慶獨有的「立體交通」代表，也是全球罕見的設計。
+                親眼見證輕軌列車直接穿過 19 層住宅大樓的奇景，這是重慶獨有的「立體交通」代表。
             </div>
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                1. <strong>觀景台</strong>：站在馬路對面的專屬觀景台，這是最佳角度。<br>
+                2. <strong>張嘴借位</strong>：很多遊客喜歡張大嘴巴，利用「借位」拍出「生吞輕軌」的趣味影片。<br>
+                3. <strong>連拍</strong>：列車進出速度快，務必開啟手機的「連拍模式」才能捕捉到車頭剛好在樓中間的瞬間。
+            </div>
+            <br>
             <a href="https://www.google.com/maps/search/?api=1&query=李子壩輕軌站" target="_blank" class="btn-map">📍 導航</a>
         </div>
     </div>
@@ -326,7 +363,6 @@
             <div class="card-header"><span class="tag hotel">🏨 住宿</span><span class="tag night">🌙 自由活動推薦</span></div>
             <div class="name">重慶伊凡酒店 或 麗碩菲大酒店</div>
             <div class="desc">
-                <strong>晚餐</strong>：敬請自理。<br>
                 <span style="color:var(--night)">🌙 <strong>晚上去哪玩：</strong></span><br>
                 回到市區，推薦去<strong>「觀音橋步行街」</strong>。這裡是重慶年輕人最愛去的地方，有巨大的 3D 屏幕，周圍美食無數（火鍋、串串），非常熱鬧，適合最後幾天的狂歡。
             </div>
@@ -342,10 +378,14 @@
             <div class="name">熊貓、索道與古鎮</div>
             <div class="desc">
                 1. <strong>重慶動物園</strong>：探訪可愛的國寶大熊貓（數量超多！）。<br>
-                2. <strong>雲端之眼</strong>：67樓高空360度俯瞰重慶全景。<br>
-                3. <strong>長江索道</strong>：被譽為「萬里長江第一條空中走廊」，體驗飛越長江。<br>
-                4. <strong>磁器口古鎮</strong>：千年古鎮，品嚐陳麻花、酸辣粉。
+                2. <strong>長江索道</strong>：被譽為「萬里長江第一條空中走廊」，體驗飛越長江。<br>
+                3. <strong>磁器口古鎮</strong>：千年古鎮，品嚐陳麻花、酸辣粉。
             </div>
+            <div class="photo-tips">
+                <span class="photo-title">📸 拍照技巧：</span>
+                <strong>長江索道</strong>：上車後盡量擠到「靠窗」的位置。索道過江時，利用窗框作為相框，拍攝江景與對岸的高樓大廈，非常有電影感。
+            </div>
+            <br>
             <a href="https://www.google.com/maps/search/?api=1&query=長江索道" target="_blank" class="btn-map">📍 導航索道</a>
         </div>
     </div>
@@ -377,7 +417,7 @@
     </div>
 </div>
 
-<div class="footer-note">© 2025 重慶豪華遊 - Flagship Edition</div>
+<div class="footer-note">© 2025 重慶豪華遊 - Photo & Guide Edition</div>
 
 <script>
     const locations = {
